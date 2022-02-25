@@ -9,6 +9,7 @@
 #include "net.h"
 
 #include "ip.h"
+#include "icmp.h"
 
 struct net_protocol
 {
@@ -303,6 +304,14 @@ int net_init(void)
     return -1;
   }
 
+  // Exercise 9-5: ICMPの初期化関数を呼び出す
+  if (icmp_init() == -1)
+  {
+    errorf("icmp_init() failure");
+    return -1;
+  }
+
   infof("initialized");
+
   return 0;
 }
